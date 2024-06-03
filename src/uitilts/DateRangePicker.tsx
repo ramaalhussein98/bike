@@ -19,7 +19,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
     <div>
       <DatePicker
         selected={startDate}
-        onChange={(date) => setStartDate(date)}
+        onChange={(date: Date | null) => setStartDate(date)}
         selectsStart
         startDate={startDate}
         endDate={endDate}
@@ -27,7 +27,7 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
       />
       <DatePicker
         selected={endDate}
-        onChange={(date) => setEndDate(date)}
+        onChange={(date: Date | null) => setEndDate(date)}
         selectsEnd
         startDate={startDate}
         endDate={endDate}

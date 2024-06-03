@@ -1,4 +1,4 @@
-import { Container, Typography, Pagination } from "@mui/material";
+import {  Typography, Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { HomeContainer } from "../../assets/styledComponents/HomeStyles";
 import Bike from "../../components/Bike";
@@ -61,7 +61,7 @@ const Home: React.FC = () => {
   }, [page]);
 
   const handlePageChange = (
-    event: React.ChangeEvent<unknown>,
+    _: React.ChangeEvent<unknown>,
     value: number
   ) => {
     setPage(value);
