@@ -1,8 +1,8 @@
-import {  Typography, Pagination } from "@mui/material";
+import { Typography, Pagination } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import { HomeContainer } from "../../assets/styledComponents/HomeStyles";
 import Bike from "../../components/Bike";
-import DateRangePicker from "../../uitilts/DateRangePicker";
+
 import SkeletonBike from "../../uitilts/Skeleton";
 import myAxios from "../../api/myAxios";
 import { BikeDataItem } from "../../uitilts/interfaces";
@@ -14,8 +14,6 @@ const Home: React.FC = () => {
   const [page, setPage] = useState<number>(1);
   const [total, setTotal] = useState<number>(0);
   const [searchText, setSearchText] = useState<string>("");
-  const [startDate, setStartDate] = useState<Date | null>(null);
-  const [endDate, setEndDate] = useState<Date | null>(null);
 
   const getData = async () => {
     setLoading(true);
@@ -29,8 +27,7 @@ const Home: React.FC = () => {
           location: "Munich",
           query: searchText,
           stolenness: "stolen",
-          startDate: startDate?.toISOString(),
-          endDate: endDate?.toISOString(),
+      
         },
       });
       const resTotal = await myAxios.get(
@@ -42,8 +39,6 @@ const Home: React.FC = () => {
             location: "Munich",
             query: searchText,
             stolenness: "stolen",
-            startDate: startDate?.toISOString(),
-            endDate: endDate?.toISOString(),
           },
         }
       );
@@ -60,10 +55,7 @@ const Home: React.FC = () => {
     getData();
   }, [page]);
 
-  const handlePageChange = (
-    _: React.ChangeEvent<unknown>,
-    value: number
-  ) => {
+  const handlePageChange = (_: React.ChangeEvent<unknown>, value: number) => {
     setPage(value);
   };
 
@@ -81,12 +73,6 @@ const Home: React.FC = () => {
           placeholder="search title"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
-        />
-        <DateRangePicker
-          startDate={startDate}
-          endDate={endDate}
-          setStartDate={setStartDate}
-          setEndDate={setEndDate}
         />
       </div>
       <button className="buttonSearch" onClick={handleSearchClick}>
