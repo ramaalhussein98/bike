@@ -27,7 +27,6 @@ const Home: React.FC = () => {
           location: "Munich",
           query: searchText,
           stolenness: "stolen",
-      
         },
       });
       const resTotal = await myAxios.get(
